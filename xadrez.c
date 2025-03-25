@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-// Desafio Nível Metre - Criando Movimentos Complexos
+// Desafio Nível Mestre - Criando Movimentos Complexos
 
 /*
     Curso ADS - Introdução à Programação de Computadores
     Tema 3 - Movimentação de Peças de Xadrez
-    Exercício: Desafio Nível Metre - Criando Movimentos Complexos
+    Exercício: Desafio Nível Mestre - Criando Movimentos Complexos
     Data: 24 de Março de 2025
     Aluno: Ednilson Graciano dos Santos
     Matrícula: 202503249997 
