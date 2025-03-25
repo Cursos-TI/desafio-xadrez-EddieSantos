@@ -11,6 +11,7 @@
     Matrícula: 202503249997 
     Versão: 0.3.0v
 */
+// Só uma observação as movimentações são feitas com o limite maximo de 8 casa do tabuleiro no caso não esta sendo conciderado os obstaculos 
 void regrasmovimentacao() {
     printf("\nRegras de movimentação do Xadrez para cada peça:\n\n");
     
@@ -307,11 +308,12 @@ int main() {
         printf("\nDeseja ver as regras do jogo de xadrez, ou Iniciar partida?\n");
         printf("1 - Regras\n");
         printf("2 - Iniciar Partida\n");
+        printf("3 - Sair\n");
         printf("Escolha uma opção: ");
         scanf("%d", &continuar);
-        while (continuar != 1 && continuar != 2) // Validação de entrada, verifica se o usuário digitou uma opção válida
+        while (continuar != 1 && continuar != 2 && continuar != 3) // Validação de entrada, verifica se o usuário digitou uma opção válida
         {
-            printf("\nOpção inválida. Por favor, escolha 1 ou 2: ");
+            printf("\nOpção inválida. Por favor, escolha 1, 2 ou 3: ");
             scanf("%d", &continuar);
         }  
         // Se o usuário escolher 1, o programa exibe as regras do jogo de xadrez.
@@ -328,203 +330,204 @@ int main() {
             } else {
                 printf("\nOpção inválida. Por favor, escolha 1 ou 2.\n");
             }            
-        }
-    } while (continuar == 1); // Se escolher 2 volta para o menu de opções
-    
-    printf("\nOk, vamos iniciar uma partida!\n");
+        } else if (continuar == 2) {
 
-    // Menu para escolhe qual peça mover
-    do {
-        printf("\nEscolha qual peça deseja mover.\n");
-        printf("1 - Peão\n");
-        printf("2 - Torre\n");
-        printf("3 - Bispo\n");
-        printf("4 - Cavalo\n");
-        printf("5 - Rainha\n");
-        printf("6 - Rei\n");
-        printf("7 - Voltar ao Menu Principal\n");
-        printf("Escolha uma opção: ");
-        scanf("%d", &mover);
-        while (mover < 1 || mover > 7) { // Validação de entrada, verifica se o usuário digitou uma opção válida
-            printf("\nOpção inválida. Por favor, escolha uma opção válida.\n");
-            printf("Escolha uma opção: ");
-            scanf("%d", &mover);
-        }
-        switch (mover) {
-            case 1: // Aqui acontece a escolha de mover peão
-                printf("\nVocê escolheu mover o Peão!\n");
-                // Aqui é o menu de movimentação do peão em que o usuário escolhe a direção e quantas casas quer mover
-                printf("Digite quantas casas deseja mover (1 ou 2 se for o primeiro movimento): ");
-                scanf("%d", &casasPeao);
+            printf("\nOk, vamos iniciar uma partida!\n");
 
-                // Validação de entrada, verifica se o usuário digitou uma opção válida
-                while (casasPeao < 1 || casasPeao > 2) {
+            // Menu para escolhe qual peça mover
+            do {
+                printf("\nEscolha qual peça deseja mover.\n");
+                printf("1 - Peão\n");
+                printf("2 - Torre\n");
+                printf("3 - Bispo\n");
+                printf("4 - Cavalo\n");
+                printf("5 - Rainha\n");
+                printf("6 - Rei\n");
+                printf("7 - Voltar ao Menu Principal\n");
+                printf("Escolha uma opção: ");
+                scanf("%d", &mover);
+                while (mover < 1 || mover > 7) { // Validação de entrada, verifica se o usuário digitou uma opção válida
                     printf("\nOpção inválida. Por favor, escolha uma opção válida.\n");
-                    printf("Digite quantas casas deseja mover 1 ou (2 se for o primeiro movimento): ");
-                    scanf("%d", &casasPeao);
+                    printf("Escolha uma opção: ");
+                    scanf("%d", &mover);
                 }
-                printf("\nMovendo o Peão...\n");
-                recursivarPeao(casasPeao);                
-                break;
-            case 2: // Aqui acontece a escolha de mover torre
-                // Aqui é o menu de movimentação da torre em que o usuário escolhe a direção e quantas casas quer mover
-                printf("\nVocê escolheu mover a Torre!\n");      
-                printf("1 - Para Cima\n");
-                printf("2 - Para Baixo\n");
-                printf("3 - Para Esquerda\n");
-                printf("4 - Para Direita\n");
-                printf("Digite a direção que deseja mover: ");
-                scanf("%d", &direcaoTorre);
+                switch (mover) {
+                    case 1: // Aqui acontece a escolha de mover peão
+                        printf("\nVocê escolheu mover o Peão!\n");
+                        // Aqui é o menu de movimentação do peão em que o usuário escolhe a direção e quantas casas quer mover
+                        printf("Digite quantas casas deseja mover (1 ou 2 se for o primeiro movimento): ");
+                        scanf("%d", &casasPeao);
 
-                 // Validação de entrada verifica se o usuário digitou uma opção válida
-                while (direcaoTorre < 1  || direcaoTorre > 4)
-                {
-                    printf("\nOpção inválida. Por favor, escolha 1, 2, 3 ou 4: ");
-                    scanf("%d", &direcaoTorre);
+                        // Validação de entrada, verifica se o usuário digitou uma opção válida
+                        while (casasPeao < 1 || casasPeao > 2) {
+                            printf("\nOpção inválida. Por favor, escolha uma opção válida.\n");
+                            printf("Digite quantas casas deseja mover 1 ou (2 se for o primeiro movimento): ");
+                            scanf("%d", &casasPeao);
+                        }
+                        printf("\nMovendo o Peão...\n");
+                        recursivarPeao(casasPeao);                
+                        break;
+                    case 2: // Aqui acontece a escolha de mover torre
+                        // Aqui é o menu de movimentação da torre em que o usuário escolhe a direção e quantas casas quer mover
+                        printf("\nVocê escolheu mover a Torre!\n");      
+                        printf("1 - Para Cima\n");
+                        printf("2 - Para Baixo\n");
+                        printf("3 - Para Esquerda\n");
+                        printf("4 - Para Direita\n");
+                        printf("Digite a direção que deseja mover: ");
+                        scanf("%d", &direcaoTorre);
+
+                        // Validação de entrada verifica se o usuário digitou uma opção válida
+                        while (direcaoTorre < 1  || direcaoTorre > 4)
+                        {
+                            printf("\nOpção inválida. Por favor, escolha 1, 2, 3 ou 4: ");
+                            scanf("%d", &direcaoTorre);
+                        }
+                        
+                        // Aqui solicita ao usuário quantas casas deseja mover
+                        printf("\nQuantas casas (1 a 8) que deseja mover: ");
+                        scanf("%d", &casasTorre);
+                        while (casasTorre < 1 || casasTorre > 8){
+                            printf("\nOpção inválida. Por favor, escolha uma opção válida.\n");
+                            printf("\nQuantas casas (1 a 8) que deseja mover: ");
+                            scanf("%d", &casasTorre);
+                        }
+
+                        // Aqui chama a função recursiva para mover a torre
+                        printf("\nMovendo a Torre...\n");
+                        recursivarTorre(casasTorre, direcaoTorre);
+                        break;                
+                    case 3: // Aqui acontece a escolha de mover bispo
+                        // Aqui é o menu de movimentação do bispo em que o usuário escolhe a direção e quantas casas quer mover perpendicular
+                        printf("\nVocê escolheu mover o Bispo!\n");
+                        printf("1 - Para Diagonal Superior à Direita\n");
+                        printf("2 - Para Diagonal Superior à Esquerda\n");
+                        printf("3 - Para Diagonal Inferior à Direita\n");
+                        printf("4 - Para Diagonal Inferior à Esquerda\n");
+                        printf("Digite a direção que deseja mover: ");
+                        scanf("%d", &direcaoBispo);
+
+                        // Validação de entrada verifica se o usuário digitou uma opção válida
+                        while (direcaoBispo < 1  || direcaoBispo > 4)
+                        {
+                            printf("\nOpção inválida. Por favor, escolha 1, 2, 3 ou 4: ");
+                            scanf("%d", &direcaoBispo);
+                        }
+
+                        // Aqui solicita ao usuário quantas casas deseja mover
+                        printf("\nQuantas casas (1 a 8) que deseja mover: ");
+                        scanf("%d", &casasBispo);
+
+                        // Validação de entrada verifica se o usuário digitou uma opção válida
+                        while (casasBispo < 1 || casasBispo > 8){
+                            printf("\nOpção inválida. Por favor, escolha uma opção válida.\n");
+                            printf("\nQuantas casas (1 a 8) que deseja mover: ");
+                            scanf("%d", &casasBispo);
+                        }
+                        // Aqui chama a função recursiva para mover o bispo
+                        printf("\nMovendo o Bispo...\n");
+                        recursivarBispo(casasBispo, direcaoBispo);
+                        break;
+                    case 4: // Aqui acontece a escolha de mover cavalo
+                        do {
+                            printf("\nVocê escolheu mover o Cavalo!\n");
+                            // Aqui é o menu de movimentação do cavalo em que o usuário escolhe a direção e quantas casas quer mover
+                            printf("1 - Para Cima e para Direita\n");
+                            printf("2 - Para Cima e para Esquerda\n");
+                            printf("3 - Para Baixo e para Direita\n");
+                            printf("4 - Para Baixo e para Esquerda\n");
+                            printf("5 - Para Direita e para Baixo\n");
+                            printf("6 - Para Direita e para Cima\n");
+                            printf("7 - Para Esquerda e para Baixo\n");
+                            printf("8 - Para Esquerda e para Cima\n");
+                            printf("9 - Regras de Movimentação\n");
+                            printf("10 - Voltar ao Menu Principal\n");
+                            printf("Digite o número da opção desejada: "); // O cavalo se move em L em 8 direções diferentes da possição atual caso esteja no centro do tabuleiro
+                            scanf("%d", &direcaoCavalo);
+                            
+                            if (direcaoCavalo >=1 && direcaoCavalo <= 8) {
+                                printf("\nMovendo o Cavalo...");
+                                int move = 1; 
+                                moveCavalo(direcaoCavalo, move);
+                                break; // move o cavalo e sai do loop voltando para o menu principal
+                            } else if (direcaoCavalo == 9) {
+                                regrasmovimentacao();
+                            } else if (direcaoCavalo != 10) {   
+                                printf("\nOpção inválida. Tente novamente.\n");
+                            }
+                        } while (direcaoCavalo != 10);
+                        break; // Se o usuário escolher 10 voltar ao menu principal, o loop é interrompido e o programa retorna ao menu principal
+                    case 5: // Aqui acontece a escolha de mover rainha
+                        printf("\nVocê escolheu mover a Rainha!\n");
+                        // Aqui é o menu de movimentação da rainha em que o usuário escolhe a direção e quantas casas quer mover
+                        printf("1 - Para Cima\n");
+                        printf("2 - Para Baixo\n");
+                        printf("3 - Para Esquerda\n");
+                        printf("4 - Para Direita\n");
+                        printf("5 - Para Diagonal Superior à Direita\n");
+                        printf("6 - Para Diagonal Superior à Esquerda\n");
+                        printf("7 - Para Diagonal Inferior à Direita\n");
+                        printf("8 - Para Diagonal Inferior à Esquerda\n");
+                        printf("Digite a direção que deseja mover: ");
+                        scanf("%d", &direcaoRainha);
+
+                        // Validação de entrada verifica se o usuário digitou uma opção válida
+                        while (direcaoRainha < 1  || direcaoRainha > 8)
+                        {
+                            printf("\nOpção inválida. Por favor, escolha 1, 2, 3, 4, 5, 6, 7 ou 8: ");
+                            scanf("%d", &direcaoRainha);
+                        }
+                        // Aqui solicita ao usuário quantas casas deseja mover
+                        printf("\nQuantas casas (1 a 8) que deseja mover: ");
+                        scanf("%d", &casasRainha);
+                        // Validação de entrada verifica se o usuário digitou uma opção válida
+                        while (casasRainha < 1 || casasRainha > 8){
+                            printf("\nOpção inválida. Por favor, escolha uma opção válida.\n");
+                            printf("\nQuantas casas (1 a 8) que deseja mover: ");
+                            scanf("%d", &casasRainha);
+                        }
+                        // Aqui chama a função recursiva para mover a rainha
+                        printf("\nMovendo a Rainha...\n");
+                        recursivarRainha(casasRainha, direcaoRainha);
+                        break;
+                    case 6: // Aqui acontece a escolha de mover rei
+                        // Aqui é o menu de movimentação do rei em que o usuário escolhe a direção e quantas casas quer mover
+                        printf("\nVocê escolheu mover o Rei!\n");
+                        printf("1 - Para Cima\n");
+                        printf("2 - Para Baixo\n");
+                        printf("3 - Para Esquerda\n");
+                        printf("4 - Para Direita\n");
+                        printf("5 - Para Diagonal Superior à Direita\n");
+                        printf("6 - Para Diagonal Superior à Esquerda\n");
+                        printf("7 - Para Diagonal Inferior à Direita\n");
+                        printf("8 - Para Diagonal Inferior à Esquerda\n");
+                        printf("Digite a direção que deseja mover: ");
+                        scanf("%d", &direcaoRei);
+                        // Validação de entrada verifica se o usuário digitou uma opção válida
+                        while (direcaoRei < 1  || direcaoRei > 8)
+                        {
+                            printf("\nOpção inválida. Por favor, escolha 1, 2, 3, 4, 5, 6, 7 ou 8: ");
+                            scanf("%d", &direcaoRei);
+                        }
+                        // Aqui o Rei só pode mover 1 casa por vez não precisa solicitar ao usuário quantas casas quer mover
+                        casasRei = 1;
+                        // Aqui chama a função recursiva para mover o rei
+                        printf("\nMovendo o Rei...\n");
+                        recursivarRei(casasRei, direcaoRei);
+                        break;
+                    case 7: // Aqui acontece a escolha de voltar ao menu anterior
+                        printf("\nVoltando ao Menu Principal!\n");
+                        return main(); // Volta para o menu principal no inicio do programa
+                    default: // Caso o usuário digite uma opção inválida
+                        printf("\nOpção inválida. Por favor, escolha uma opção válida.\n");
+                        break;
                 }
-                
-                // Aqui solicita ao usuário quantas casas deseja mover
-                printf("\nQuantas casas (1 a 8) que deseja mover: ");
-                scanf("%d", &casasTorre);
-                while (casasTorre < 1 || casasTorre > 8){
-                    printf("\nOpção inválida. Por favor, escolha uma opção válida.\n");
-                    printf("\nQuantas casas (1 a 8) que deseja mover: ");
-                    scanf("%d", &casasTorre);
-                }
-
-                // Aqui chama a função recursiva para mover a torre
-                printf("\nMovendo a Torre...\n");
-                recursivarTorre(casasTorre, direcaoTorre);
-                break;                
-            case 3: // Aqui acontece a escolha de mover bispo
-                // Aqui é o menu de movimentação do bispo em que o usuário escolhe a direção e quantas casas quer mover perpendicular
-                printf("\nVocê escolheu mover o Bispo!\n");
-                printf("1 - Para Diagonal Superior à Direita\n");
-                printf("2 - Para Diagonal Superior à Esquerda\n");
-                printf("3 - Para Diagonal Inferior à Direita\n");
-                printf("4 - Para Diagonal Inferior à Esquerda\n");
-                printf("Digite a direção que deseja mover: ");
-                scanf("%d", &direcaoBispo);
-
-                // Validação de entrada verifica se o usuário digitou uma opção válida
-                while (direcaoBispo < 1  || direcaoBispo > 4)
-                {
-                    printf("\nOpção inválida. Por favor, escolha 1, 2, 3 ou 4: ");
-                    scanf("%d", &direcaoBispo);
-                }
-
-                // Aqui solicita ao usuário quantas casas deseja mover
-                printf("\nQuantas casas (1 a 8) que deseja mover: ");
-                scanf("%d", &casasBispo);
-
-                // Validação de entrada verifica se o usuário digitou uma opção válida
-                while (casasBispo < 1 || casasBispo > 8){
-                    printf("\nOpção inválida. Por favor, escolha uma opção válida.\n");
-                    printf("\nQuantas casas (1 a 8) que deseja mover: ");
-                    scanf("%d", &casasBispo);
-                }
-                // Aqui chama a função recursiva para mover o bispo
-                printf("\nMovendo o Bispo...\n");
-                recursivarBispo(casasBispo, direcaoBispo);
-                break;
-            case 4: // Aqui acontece a escolha de mover cavalo
-                do {
-                    printf("\nVocê escolheu mover o Cavalo!\n");
-                    // Aqui é o menu de movimentação do cavalo em que o usuário escolhe a direção e quantas casas quer mover
-                    printf("1 - Para Cima e para Direita\n");
-                    printf("2 - Para Cima e para Esquerda\n");
-                    printf("3 - Para Baixo e para Direita\n");
-                    printf("4 - Para Baixo e para Esquerda\n");
-                    printf("5 - Para Direita e para Baixo\n");
-                    printf("6 - Para Direita e para Cima\n");
-                    printf("7 - Para Esquerda e para Baixo\n");
-                    printf("8 - Para Esquerda e para Cima\n");
-                    printf("9 - Regras de Movimentação\n");
-                    printf("10 - Voltar ao Menu Principal\n");
-                    printf("Digite o número da opção desejada: "); // O cavalo se move em L em 8 direções diferentes da possição atual caso esteja no centro do tabuleiro
-                    scanf("%d", &direcaoCavalo);
-                    
-                    if (direcaoCavalo >=1 && direcaoCavalo <= 8) {
-                        printf("\nMovendo o Cavalo...");
-                        int move = 1; 
-                        moveCavalo(direcaoCavalo, move);
-                        break; // move o cavalo e sai do loop voltando para o menu principal
-                    } else if (direcaoCavalo == 9) {
-                        regrasmovimentacao();
-                    } else if (direcaoCavalo != 10) {   
-                        printf("\nOpção inválida. Tente novamente.\n");
-                    }
-                } while (direcaoCavalo != 10);
-                break; // Se o usuário escolher 10 voltar ao menu principal, o loop é interrompido e o programa retorna ao menu principal
-            case 5: // Aqui acontece a escolha de mover rainha
-                printf("\nVocê escolheu mover a Rainha!\n");
-                // Aqui é o menu de movimentação da rainha em que o usuário escolhe a direção e quantas casas quer mover
-                printf("1 - Para Cima\n");
-                printf("2 - Para Baixo\n");
-                printf("3 - Para Esquerda\n");
-                printf("4 - Para Direita\n");
-                printf("5 - Para Diagonal Superior à Direita\n");
-                printf("6 - Para Diagonal Superior à Esquerda\n");
-                printf("7 - Para Diagonal Inferior à Direita\n");
-                printf("8 - Para Diagonal Inferior à Esquerda\n");
-                printf("Digite a direção que deseja mover: ");
-                scanf("%d", &direcaoRainha);
-
-                // Validação de entrada verifica se o usuário digitou uma opção válida
-                while (direcaoRainha < 1  || direcaoRainha > 8)
-                {
-                    printf("\nOpção inválida. Por favor, escolha 1, 2, 3, 4, 5, 6, 7 ou 8: ");
-                    scanf("%d", &direcaoRainha);
-                }
-                // Aqui solicita ao usuário quantas casas deseja mover
-                printf("\nQuantas casas (1 a 8) que deseja mover: ");
-                scanf("%d", &casasRainha);
-                // Validação de entrada verifica se o usuário digitou uma opção válida
-                while (casasRainha < 1 || casasRainha > 8){
-                    printf("\nOpção inválida. Por favor, escolha uma opção válida.\n");
-                    printf("\nQuantas casas (1 a 8) que deseja mover: ");
-                    scanf("%d", &casasRainha);
-                }
-                // Aqui chama a função recursiva para mover a rainha
-                printf("\nMovendo a Rainha...\n");
-                recursivarRainha(casasRainha, direcaoRainha);
-                break;
-            case 6: // Aqui acontece a escolha de mover rei
-                // Aqui é o menu de movimentação do rei em que o usuário escolhe a direção e quantas casas quer mover
-                printf("\nVocê escolheu mover o Rei!\n");
-                printf("1 - Para Cima\n");
-                printf("2 - Para Baixo\n");
-                printf("3 - Para Esquerda\n");
-                printf("4 - Para Direita\n");
-                printf("5 - Para Diagonal Superior à Direita\n");
-                printf("6 - Para Diagonal Superior à Esquerda\n");
-                printf("7 - Para Diagonal Inferior à Direita\n");
-                printf("8 - Para Diagonal Inferior à Esquerda\n");
-                printf("Digite a direção que deseja mover: ");
-                scanf("%d", &direcaoRei);
-                // Validação de entrada verifica se o usuário digitou uma opção válida
-                while (direcaoRei < 1  || direcaoRei > 8)
-                {
-                    printf("\nOpção inválida. Por favor, escolha 1, 2, 3, 4, 5, 6, 7 ou 8: ");
-                    scanf("%d", &direcaoRei);
-                }
-                // Aqui o Rei só pode mover 1 casa por vez não precisa solicitar ao usuário quantas casas quer mover
-                casasRei = 1;
-                // Aqui chama a função recursiva para mover o rei
-                printf("\nMovendo o Rei...\n");
-                recursivarRei(casasRei, direcaoRei);
-                break;
-            case 7: // Aqui acontece a escolha de voltar ao menu anterior
-                printf("\nVoltando ao Menu Principal!\n");
-                return main(); // Volta para o menu principal no inicio do programa
-            default: // Caso o usuário digite uma opção inválida
-                printf("\nOpção inválida. Por favor, escolha uma opção válida.\n");
-                break;
-        }
-    }   while (mover != 7); // Se escolher 7 volta para o menu inicial do jogo 
-    printf("\n");
-
-    printf("### Fim do jogo de xadrez! Até a próxima etapa... ###\n");
-
+            }   while (mover != 7); // Se escolher 7 volta para o menu de opções
+        
+        } else if (continuar == 3) {
+        printf("### Fim do jogo de xadrez! Até a próxima etapa... ###\n");
+        break;
+    }
+    } while (continuar != 3); // Fim do menu principal
     return 0;
 }
