@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
 
 // Desafio Nível Mestre - Criando Movimentos Complexos
 
@@ -6,10 +9,10 @@
     Curso ADS - Introdução à Programação de Computadores
     Tema 3 - Movimentação de Peças de Xadrez
     Exercício: Desafio Nível Mestre - Criando Movimentos Complexos
-    Data: 24 de Março de 2025
+    Data: 26 de Março de 2025
     Aluno: Ednilson Graciano dos Santos
     Matrícula: 202503249997 
-    Versão: 0.3.1v
+    Versão: 0.3.2v
 */
 // Só uma observação as movimentações são feitas com o limite maximo de 8 casa do tabuleiro no caso não esta sendo conciderado os obstaculos 
 // Declarando as funções
@@ -30,6 +33,10 @@ void movimentarPeca(int mover);
 
 int main() {
     int continuar;
+    
+    // Setando a biblioteca de caracteres especificos para o Brasil para formatar o tabuleiro e mostrar os caracteres especiais do jogo
+    setlocale(LC_ALL, "pt_BR.UTF-8");
+    setlocale(LC_ALL, "");
 
     printf("### Bem-vindo ao jogo de xadrez! ###\n");
     do {
@@ -37,7 +44,7 @@ int main() {
         MenuPrincipal(); // Chama a função MenuPrincipal() para mostrar o menu principal
         scanf("%d", &continuar);
         while (continuar < 1 || continuar > 3) {
-            printf("\nOpção inválida. Por favor, escolha 1, 2 ou 3: ");
+            printf("\nOpção inválida. Por favor, escolha 1 a 3: ");
             scanf("%d", &continuar);
         }
         // switch para escolher a opção do menu principal
@@ -57,6 +64,7 @@ int main() {
 
     return 0;
 }
+
 void MenuPrincipal() { // Menu principal do jogo
     printf("\nDeseja ver as regras do jogo de xadrez ou iniciar partida?\n");
     printf("1 - Regras\n");
@@ -200,9 +208,9 @@ void movimentarPeca(int mover) { // Função para movimentar a peça escolhida p
                 printf("Digite o número da opção desejada: "); // O cavalo se move em L em 8 direções diferentes da possição atual caso esteja no centro do tabuleiro
                 scanf("%d", &direcao);
                 
-                if (direcao >=1 && direcao <= 8) {
+                if (direcao >= 1 && direcao <= 8) {
                     printf("\nMovendo o Cavalo..."); 
-                    moveCavalo(direcao, 1);
+                    moveCavalo(direcao, 1); 
                     break; // move o cavalo e sai do loop voltando para o menu principal
                 } else if (direcao == 9) {
                     regrasmovimentacao();
